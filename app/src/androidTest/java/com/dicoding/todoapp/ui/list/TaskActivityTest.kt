@@ -25,6 +25,10 @@ class TaskActivityTest {
     fun addTaskActivity(){
         onView(withId(R.id.fab)).check(matches(isDisplayed()))
         onView(withId(R.id.fab)).perform(click())
+        onView(withId(R.id.add_ed_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.add_ed_description)).check(matches(isDisplayed()))
+        onView(withId(R.id.add_tv_due_date)).check(matches(isDisplayed()))
+        onView(withId(R.id.action_save)).check(matches(isDisplayed()))
     }
 
 }

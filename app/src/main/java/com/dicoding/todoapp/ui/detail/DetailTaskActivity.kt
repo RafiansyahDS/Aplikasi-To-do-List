@@ -1,11 +1,14 @@
 package com.dicoding.todoapp.ui.detail
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.dicoding.todoapp.R
 import com.dicoding.todoapp.ui.ViewModelFactory
+import com.dicoding.todoapp.ui.add.AddTaskActivity
+import com.dicoding.todoapp.ui.list.TaskActivity
 import com.dicoding.todoapp.utils.DateConverter
 import com.dicoding.todoapp.utils.TASK_ID
 import com.google.android.material.textfield.TextInputEditText
@@ -40,10 +43,12 @@ class DetailTaskActivity : AppCompatActivity() {
                 edtDueDate.setText(DateConverter.convertMillisToString(it.dueDateMillis))
                 edtDesc.setText(it.description)
             }
+        }
 
-            btnHapus.setOnClickListener {
-                taskDetailViewModel.deleteTask()
-            }
+        btnHapus.setOnClickListener {
+            taskDetailViewModel.deleteTask()
+            taskDetailViewModel.task.removeObservers(this)
+            finish()
         }
     }
 }
